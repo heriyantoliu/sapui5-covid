@@ -31,7 +31,7 @@
                                 text="World"
                             >                                
                                 <mvc:XMLView
-                                    viewName = "com.sap.zcovid19dashboard.view.World"
+                                    viewName = "com.sap.zcovid19dashboard.component.World"
                                 />
                             </IconTabFilter>
 
@@ -40,7 +40,7 @@
                                 icon="sap-icon://geographic-bubble-chart"
                                 text="Countries">                                
                                 <mvc:XMLView
-                                    viewName = "com.sap.zcovid19dashboard.view.Country"
+                                    viewName = "com.sap.zcovid19dashboard.component.Country"
                                 />
                             </IconTabFilter>
                             
@@ -50,7 +50,7 @@
                                 text="Graph"
                             >
                                 <mvc:XMLView
-                                    viewName = "com.sap.zcovid19dashboard.view.Graph"
+                                    viewName = "com.sap.zcovid19dashboard.component.Graph"
                                 />
                             </IconTabFilter>
                         </items>
