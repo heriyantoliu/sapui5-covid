@@ -1,0 +1,53 @@
+<mvc:View 
+    controllerName="com.sap.zcovid19dashboard.controller.Graph"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+
+    <viz:VizFrame 
+        id="idVizFrame" 
+        uiConfig="{applicationSet:'fiori'}"                                    
+        width="100%" 
+        vizType="bar">
+        <viz:dataset>
+            <viz.data:FlattenedDataset 
+                data="{oCountryWiseModel>/}">
+                <viz.data:dimensions>
+                    <viz.data:DimensionDefinition 
+                        name="Country"
+                        value="{oCountryWiseModel>country}" />
+                </viz.data:dimensions>
+                <viz.data:measures>
+                    <viz.data:MeasureDefinition 
+                        name="Total Cases"
+                        value="{oCountryWiseModel>cases}" />
+                    <viz.data:MeasureDefinition 
+                        name="Total Recovered"
+                        value="{oCountryWiseModel>recovered}" />
+                </viz.data:measures>
+            </viz.data:FlattenedDataset>
+        </viz:dataset>
+
+        <viz:feeds>
+            <viz.feeds:FeedItem 
+                id='valueAxisFeed' 
+                uid="valueAxis" 
+                type="Measure"
+                values="Total Cases" />
+            <viz.feeds:FeedItem 
+                id='valueAxisFeed2' 
+                uid="valueAxis" 
+                type="Measure"
+                values="Total Recovered" />
+            <viz.feeds:FeedItem 
+                id='categoryAxisFeed' 
+                uid="categoryAxis" 
+                type="Dimension"
+                values="Country" />
+        </viz:feeds>
+    </viz:VizFrame>
+
+</mvc:View>

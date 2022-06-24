@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.sap.zcovid19dashboard.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" 
     displayBlock="true"
-    xmlns="sap.m"
+    xmlns="sap.m"    
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
@@ -29,93 +29,19 @@
                                 key="1"
                                 icon="sap-icon://choropleth-chart"
                                 text="World"
-                            >
-                                <GenericTile 
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
-                                    header="Covid-19 Cases"
-                                    frameType = "OneByHalf" 
-                                    subheader="in the world" 
-                                    press="onPress">
-                                    <TileContent 
-                                        footer="Real time" >
-                                            <NumericContent 
-                                                scale="M" 
-                                                value="{oCovidReportModel>/cases1}" 
-                                                valueColor="Error"                                                
-                                                withMargin="false" />
-                                    </TileContent>
-                                </GenericTile>
-
-                                <GenericTile 
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
-                                    header="Deaths by Covid-19"
-                                    frameType = "OneByHalf" 
-                                    subheader="in the world" 
-                                    press="onPress">
-                                    <TileContent 
-                                        footer="Real time" >
-                                            <NumericContent 
-                                                scale="M" 
-                                                value="{oCovidReportModel>/deaths}" 
-                                                valueColor="Error"                                                
-                                                withMargin="false" />
-                                    </TileContent>
-                                </GenericTile>
-
-                                <GenericTile 
-                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
-                                    header="Recovered by Covid-19"
-                                    frameType = "OneByHalf" 
-                                    subheader="in the world" 
-                                    press="onPress">
-                                    <TileContent 
-                                        footer="Real time" >
-                                            <NumericContent 
-                                                scale="M" 
-                                                value="{oCovidReportModel>/recovered}" 
-                                                valueColor="Error"                                                
-                                                withMargin="false" />
-                                    </TileContent>
-                                </GenericTile>
+                            >                                
+                                <mvc:XMLView
+                                    viewName = "com.sap.zcovid19dashboard.view.World"
+                                />
                             </IconTabFilter>
 
                             <IconTabFilter
                                 key="2"
                                 icon="sap-icon://geographic-bubble-chart"
                                 text="Countries">                                
-                                <Table
-                                    id="CountryTable"
-                                    items="{oCountryWiseModel>/}">
-                                    <columns>
-                                        <Column>
-                                            <Text text="Country" />
-                                        </Column>
-                                        <Column>
-                                            <Text text="Cases" />
-                                        </Column>
-                                        <Column>
-                                            <Text text="Deaths" />
-                                        </Column>
-                                        <Column>
-                                            <Text text="Today Deaths" />
-                                        </Column>
-                                        <Column>
-                                            <Text text="Recovered" />
-                                        </Column>
-                                    </columns>
-
-                                    <items>
-                                        <ColumnListItem>
-                                            <cells>
-                                                <Text text="{oCountryWiseModel>country}" />
-                                                <Text text="{oCountryWiseModel>cases}" />
-                                                <Text text="{oCountryWiseModel>deaths}" />
-                                                <Text text="{oCountryWiseModel>todayDeaths}" />
-                                                <Text text="{oCountryWiseModel>recovered}" />
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
+                                <mvc:XMLView
+                                    viewName = "com.sap.zcovid19dashboard.view.Country"
+                                />
                             </IconTabFilter>
                             
                             <IconTabFilter
@@ -123,48 +49,9 @@
                                 icon="sap-icon://business-objects-experience"
                                 text="Graph"
                             >
-                                <viz:VizFrame 
-                                    id="idVizFrame" 
-                                    uiConfig="{applicationSet:'fiori'}"                                    
-                                    width="100%" 
-                                    vizType="bar">
-                                    <viz:dataset>
-                                        <viz.data:FlattenedDataset 
-                                            data="{oCountryWiseModel>/}">
-                                            <viz.data:dimensions>
-                                                <viz.data:DimensionDefinition 
-                                                    name="Country"
-                                                    value="{oCountryWiseModel>country}" />
-                                            </viz.data:dimensions>
-                                            <viz.data:measures>
-                                                <viz.data:MeasureDefinition 
-                                                    name="Total Cases"
-                                                    value="{oCountryWiseModel>cases}" />
-                                                <viz.data:MeasureDefinition 
-                                                    name="Total Recovered"
-                                                    value="{oCountryWiseModel>recovered}" />
-                                            </viz.data:measures>
-                                        </viz.data:FlattenedDataset>
-                                    </viz:dataset>
-
-                                    <viz:feeds>
-                                        <viz.feeds:FeedItem 
-                                            id='valueAxisFeed' 
-                                            uid="valueAxis" 
-                                            type="Measure"
-                                            values="Total Cases" />
-                                        <viz.feeds:FeedItem 
-                                            id='valueAxisFeed2' 
-                                            uid="valueAxis" 
-                                            type="Measure"
-                                            values="Total Recovered" />
-                                        <viz.feeds:FeedItem 
-                                            id='categoryAxisFeed' 
-                                            uid="categoryAxis" 
-                                            type="Dimension"
-                                            values="Country" />
-                                    </viz:feeds>
-                                </viz:VizFrame>
+                                <mvc:XMLView
+                                    viewName = "com.sap.zcovid19dashboard.view.Graph"
+                                />
                             </IconTabFilter>
                         </items>
                     </IconTabBar>

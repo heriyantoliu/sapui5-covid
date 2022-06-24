@@ -10,26 +10,26 @@ sap.ui.define([
 
         return Controller.extend("com.sap.zcovid19dashboard.controller.View1", {
             onInit: function () {
-                this.fnCovidReport();
-                this.fnGetCountryWise();
+                // this.fnCovidReport();
+                // this.fnGetCountryWise();
 
-                var oVizFrame = this.getView().byId("idVizFrame");
-                oVizFrame.setVizProperties({
-                    plotArea: {
-                        dataLabel: {
-                            visible: true
-                        }
-                    },
-                    valueAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: true,
-                        text: 'Covid-19 Total Cases vs Recovered'
-                    }
-                })
+                // var oVizFrame = this.getView().byId("idVizFrame");
+                // oVizFrame.setVizProperties({
+                //     plotArea: {
+                //         dataLabel: {
+                //             visible: true
+                //         }
+                //     },
+                //     valueAxis: {
+                //         title: {
+                //             visible: false
+                //         }
+                //     },
+                //     title: {
+                //         visible: true,
+                //         text: 'Covid-19 Total Cases vs Recovered'
+                //     }
+                // })
             },
 
             fnCovidReport: function () {
@@ -38,9 +38,7 @@ sap.ui.define([
                     .then(response => response.json())
                     .then(result => {
                         var obj = {
-                            "cases": result.cases,
-                            "deaths": result.deaths,
-                            "recovered": result.recovered,
+                            ... result,                            
                             "cases1": Math.abs(Number(result.cases)) / 1.0e+6,
                             "deaths1": Math.abs(Number(result.deaths)) / 1.0e+6,
                             "recovered1": Math.abs(Number(result.recovered)) / 1.0e+6,

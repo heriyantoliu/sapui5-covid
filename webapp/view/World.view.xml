@@ -1,0 +1,55 @@
+<mvc:View 
+    controllerName="com.sap.zcovid19dashboard.controller.World"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    
+    <GenericTile 
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+        header="Covid-19 Cases"
+        frameType = "OneByHalf" 
+        subheader="in the world" 
+        press="onPress">
+        <TileContent 
+            footer="Real time" >
+                <NumericContent 
+                    scale="M" 
+                    value="{oCovidReportModel>/cases1}" 
+                    valueColor="Error"                                                
+                    withMargin="false" />
+        </TileContent>
+    </GenericTile>
+
+    <GenericTile 
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+        header="Deaths by Covid-19"
+        frameType = "OneByHalf" 
+        subheader="in the world" 
+        press="onPress">
+        <TileContent 
+            footer="Real time" >
+                <NumericContent 
+                    scale="M" 
+                    value="{oCovidReportModel>/deaths}" 
+                    valueColor="Error"                                                
+                    withMargin="false" />
+        </TileContent>
+    </GenericTile>
+
+    <GenericTile 
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+        header="Recovered by Covid-19"
+        frameType = "OneByHalf" 
+        subheader="in the world" 
+        press="onPress">
+        <TileContent 
+            footer="Real time" >
+                <NumericContent 
+                    scale="M" 
+                    value="{oCovidReportModel>/recovered}" 
+                    valueColor="Error"                                                
+                    withMargin="false" />
+        </TileContent>
+    </GenericTile>
+    
+</mvc:View>

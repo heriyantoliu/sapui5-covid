@@ -1,0 +1,39 @@
+<mvc:View 
+    controllerName="com.sap.zcovid19dashboard.controller.Country"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Table
+        id="CountryTable"
+        items="{oCountryWiseModel>/}">
+        <columns>
+            <Column>
+                <Text text="Country" />
+            </Column>
+            <Column>
+                <Text text="Cases" />
+            </Column>
+            <Column>
+                <Text text="Deaths" />
+            </Column>
+            <Column>
+                <Text text="Today Deaths" />
+            </Column>
+            <Column>
+                <Text text="Recovered" />
+            </Column>
+        </columns>
+
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{oCountryWiseModel>country}" />
+                    <Text text="{oCountryWiseModel>cases}" />
+                    <Text text="{oCountryWiseModel>deaths}" />
+                    <Text text="{oCountryWiseModel>todayDeaths}" />
+                    <Text text="{oCountryWiseModel>recovered}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</mvc:View>
