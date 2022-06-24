@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: com.sap.zcovid19dashboard
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://bfes58423.solco.global.nttdata.com:8000
+          client: "100"
+        app:
+          name: ZCOVID19_DASH
+          description: Test Deploy UI5
+          package: $ZPKG_ID10014450_UI5
+          transport: ""
