@@ -7,6 +7,7 @@ sap.ui.define(
   
       return BaseController.extend("com.sap.zcovid19dashboard.controller.controller.App", {
         onInit() {
+          
         }
       });
     }

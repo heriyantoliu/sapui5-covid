@@ -9,7 +9,7 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("com.sap.zcovid19dashboard.controller.Graph", {
-            onInit: function () { 
+            onInit() {
                 this.fnGetCountryWise()
                 var oVizFrame = this.getView().byId("idVizFrame");
                 oVizFrame.setVizProperties({
@@ -29,15 +29,11 @@ sap.ui.define([
                     }
                 })
             },
-            fnGetCountryWise: function () {
-                var oThat = this;
-
-                fetch("https://coronavirus-19-api.herokuapp.com/countries")
-                    .then(response => response.json())
-                    .then(result => {
-                        var oCountryWiseModel = new JSONModel(result);
-                        oThat.getView().setModel(oCountryWiseModel, "oCountryWiseModel");
-                    })
+            async fnGetCountryWise() {
+                var response = await fetch("https://coronavirus-19-api.herokuapp.com/countries")
+                var result = await response.json()
+                var oCountryWiseModel = new JSONModel(result);
+                this.getView().setModel(oCountryWiseModel, "oCountryWiseModel");
             }
         })
-})
+    })

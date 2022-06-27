@@ -9,18 +9,14 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("com.sap.zcovid19dashboard.controller.Country", {
-            onInit: function () { 
+            onInit() {
                 this.fnGetCountryWise()
             },
-            fnGetCountryWise: function () {
-                var oThat = this;
-
-                fetch("https://coronavirus-19-api.herokuapp.com/countries")
-                    .then(response => response.json())
-                    .then(result => {
-                        var oCountryWiseModel = new JSONModel(result);
-                        oThat.getView().setModel(oCountryWiseModel, "oCountryWiseModel");
-                    })
+            async fnGetCountryWise() {
+                const response = await fetch("https://coronavirus-19-api.herokuapp.com/countries")
+                const result = await response.json()
+                var oCountryWiseModel = new JSONModel(result);
+                this.getView().setModel(oCountryWiseModel, "oCountryWiseModel");
             }
         })
-})
+    })
